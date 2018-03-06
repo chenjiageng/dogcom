@@ -1,6 +1,6 @@
 CC     = gcc
 TARGET = dogcom
-INSTALL_DIR = /usr/bin/
+INSTALL_DIR = /data/data/com.termux/files/usr
 
 ifeq ($(debug), y)
 	CFLAGS += -DDEBUG -g
@@ -24,9 +24,9 @@ ifeq ($(force_encrypt), y)
 endif
 
 ifeq ($(test), y)
-	CFLAGS += -std=gnu99 -Werror -DTEST
+	CFLAGS += -std=c11 -Werror -DTEST
 else
-	CFLAGS += -std=gnu99 -Werror
+	CFLAGS += -std=c11 -Werror
 endif
 
 SOURCES = $(wildcard *.c) $(wildcard libs/*.c)

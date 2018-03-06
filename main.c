@@ -65,9 +65,6 @@ int main(int argc, char *argv[]) {
                 }
                 break;
             case 'c':
-#ifndef __APPLE__
-                if (mode != NULL) {
-#endif
 #ifdef linux
                     char path_c[PATH_MAX];
                     realpath(optarg, path_c);
@@ -75,17 +72,11 @@ int main(int argc, char *argv[]) {
 #else
                     file_path = optarg;
 #endif
-#ifndef __APPLE__
-                }
-#endif
                 break;
             case 'b':
                 strcpy(bind_ip, optarg);
                 break;
             case 'l':
-#ifndef __APPLE__
-                if (mode != NULL) {
-#endif
 #ifdef linux
                     char path_l[PATH_MAX];
                     realpath(optarg, path_l);
@@ -94,9 +85,6 @@ int main(int argc, char *argv[]) {
                     log_path = optarg;
 #endif
                     logging_flag = 1;
-#ifndef __APPLE__
-                }
-#endif
                 break;
 #ifdef linux
             case 'd':
@@ -123,9 +111,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-#ifndef __APPLE__
-    if (mode != NULL && file_path != NULL) {
-#endif
 #ifdef linux
         if (daemon_flag) {
             daemonise();
@@ -156,12 +141,6 @@ int main(int argc, char *argv[]) {
         } else {
             return 1;
         }
-#ifndef __APPLE__
-    } else {
-        printf("Need more options!\n\n");
-        return 1;
-    }
-#endif
     return 0;
 }
 
