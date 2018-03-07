@@ -1,6 +1,6 @@
 CC     = gcc
 TARGET = dogcom
-INSTALL_DIR = /data/data/com.termux/files/usr
+INSTALL_DIR = /data/data/com.termux/files/usr/bin
 
 ifeq ($(debug), y)
 	CFLAGS += -DDEBUG -g
